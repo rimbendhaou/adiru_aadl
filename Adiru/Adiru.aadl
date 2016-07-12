@@ -1,0 +1,162 @@
+package Adiru
+public
+	
+	
+	
+	
+	-----------------------
+	----- Data
+	-----------------------
+	
+	-- Inputs data
+	
+	-- data from CDU
+	data cdu_bus_Input
+		
+	end cdu_bus_Input;
+	
+	--data from FMCS
+	data remote_initialization_fmcs1
+		
+	end remote_initialization_fmcs1;
+	
+	data remote_initialization_fmcs2
+		
+	end remote_initialization_fmcs2;
+	
+	-- data from ADM
+	data adm_bus_input1
+		
+	end adm_bus_input1;
+	
+	data adm_bus_input2
+		
+	end adm_bus_input2;
+	
+	data adm_bus_input3
+		
+	end adm_bus_input3;
+	
+	data adm_bus_input4
+		
+	end adm_bus_input4;
+	
+	data adm_bus_input5
+		
+	end adm_bus_input5;
+	
+	--data from other adiru
+	data intercom_input
+		
+	end intercom_input;
+	
+	--data from Digital Baro Corr Source 1 & Source2
+	data digital_baro_corr_bus_input1
+		
+	end digital_baro_corr_bus_input1;
+	
+	data digital_baro_corr_bus_input2
+		
+	end digital_baro_corr_bus_input2;
+	
+	--data from GNSSU
+	data gnssu_reserved_input1
+		
+	end gnssu_reserved_input1;
+	
+	data gnssu_data_input_sec
+	
+	end gnssu_data_input_sec;
+	
+	data gnssu_data_input_prim
+	
+	end gnssu_data_input_prim;
+	
+	data gnss_time_markup_input_prim
+		
+	end gnss_time_markup_input_prim;
+	
+	data gnss_time_markup_input_sec
+		
+	end gnss_time_markup_input_sec;
+	
+	-- data from Data Loader:Arinc 615
+	data data_loader_input_bus
+	
+	end data_loader_input_bus;
+	
+	-- data from CFDIU :Arinc  604
+	data oms_data_bus_input
+	
+	end oms_data_bus_input;
+	
+	-- data from Digital Air Data System DADS1 & DADS2: Arinc 706
+	data dads_bus_input1
+		
+	end dads_bus_input1;
+	
+	data dads_bus_input2
+		
+	end dads_bus_input2;
+	
+	
+	--Output data
+	
+	-- TO Primary Flight Instruments
+	data data_bus_output1
+	
+	end data_bus_output1;
+	
+	-- To Flight Control Computer
+	data data_bus_output2
+	
+	end data_bus_output2;
+	
+	--To CDU
+	data data_bus_output3
+	
+	end data_bus_output3;
+	
+	--To GNSSU
+	data reserved_GNSSU_output
+		
+	end reserved_GNSSU_output;
+	
+	--To AFS
+	data air_data_bus1
+	
+	end air_data_bus1;
+	
+	--To Cockpit Instrument
+	data air_data_bus2
+	
+	end air_data_bus2;
+	
+	--To Engine Control System
+	data air_data_bus3
+	
+	end air_data_bus3;
+	
+	--To User Devices
+	data air_data_bus4
+	
+	end air_data_bus4;
+	
+	data air_data_bus5
+	
+	end air_data_bus5;
+	
+	data air_data_bus6
+	
+	end air_data_bus6;
+	
+	--To Engine Electronic Control Computer
+	data air_data_bus7
+	
+	end air_data_bus7;
+	
+	data air_data_bus8
+	
+	end air_data_bus8;
+	
+	end Adiru;
