@@ -1,166 +1,284 @@
 package Adiru
 public
+	with ARINC653;
 	
 	-------------------------------------------------
 	
-	--An attempt for the modelisation of ADIRU with AADL
+	--An attempt for the modelization of ADIRU with AADL
 	
 	-------------------------------------------------
 	
 	
-	-----------------------
+	--------------------------------------------------------------------------------------
 	----- Data
-	-----------------------
+	--------------------------------------------------------------------------------------
 	
 	-- Inputs data
-	
-	-- data from CDU
-	data cdu_bus_Input
+	--------------------------------------------------------------------------------------
+	-- data from CDU and FMC
+	data set_latitude_Input -- label 041
 		
-	end cdu_bus_Input;
+	end set_latitude_Input;
 	
-	--data from FMCS
-	data remote_initialization_fmcs1
+	data set_longitude_Input -- label 042
 		
-	end remote_initialization_fmcs1;
+	end set_longitude_Input;
 	
-	data remote_initialization_fmcs2
+	data set_magnetic_heading_Input -- label 043
 		
-	end remote_initialization_fmcs2;
+	end set_magnetic_heading_Input;
 	
-	-- data from ADM
-	data adm_bus_input1
-		
-	end adm_bus_input1;
 	
-	data adm_bus_input2
-		
-	end adm_bus_input2;
 	
-	data adm_bus_input3
+	--data from FMC
+	data utc_input --label 150
 		
-	end adm_bus_input3;
+	end utc_input;
 	
-	data adm_bus_input4
+	data date_input --label 260
 		
-	end adm_bus_input4;
+	end date_input;
 	
-	data adm_bus_input5
+	--data from FMC and other adiru
+	data true_airspeed_input --label 210
 		
-	end adm_bus_input5;
+	end true_airspeed_input;
 	
 	--data from other adiru
-	data intercom_input
+	data altitude_input --label 203
 		
-	end intercom_input;
-	
-	--data from Digital Baro Corr Source 1 & Source2
-	data digital_baro_corr_bus_input1
-		
-	end digital_baro_corr_bus_input1;
-	
-	data digital_baro_corr_bus_input2
-		
-	end digital_baro_corr_bus_input2;
-	
-	--data from GNSSU
-	data gnssu_reserved_input1
-		
-	end gnssu_reserved_input1;
-	
-	data gnssu_data_input_sec
-	
-	end gnssu_data_input_sec;
-	
-	data gnssu_data_input_prim
-	
-	end gnssu_data_input_prim;
-	
-	data gnss_time_markup_input_prim
-		
-	end gnss_time_markup_input_prim;
-	
-	data gnss_time_markup_input_sec
-		
-	end gnss_time_markup_input_sec;
-	
-	-- data from Data Loader:Arinc 615
-	data data_loader_input_bus
-	
-	end data_loader_input_bus;
-	
-	-- data from CFDIU :Arinc  604
-	data oms_data_bus_input
-	
-	end oms_data_bus_input;
-	
-	-- data from Digital Air Data System DADS1 & DADS2: Arinc 706
-	data dads_bus_input1
-		
-	end dads_bus_input1;
-	
-	data dads_bus_input2
-		
-	end dads_bus_input2;
+	end altitude_input;
 	
 	
 	--Output data
+	--------------------------------------------------------------------------------------
+	-- to other adiru
+	data inertial_altitude -- label 361
+	end inertial_altitude;
 	
-	-- TO Primary Flight Instruments
-	data data_bus_output1
-	
-	end data_bus_output1;
-	
-	-- To Flight Control Computer
-	data data_bus_output2
-	
-	end data_bus_output2;
-	
-	--To CDU
-	data data_bus_output3
-	
-	end data_bus_output3;
-	
-	--To GNSSU
-	data reserved_GNSSU_output
+	data insrtial_vertical_speed -- label 365
 		
-	end reserved_GNSSU_output;
+	end insrtial_vertical_speed;
 	
-	--To AFS
-	data air_data_bus1
+	-- to other adiru or/and Flight management Computer 702
+	data present_position_lat --label 010
+		
+	end present_position_lat;
 	
-	end air_data_bus1;
+	data present_position_long --label 011
+	end present_position_long;
 	
-	--To Cockpit Instrument
-	data air_data_bus2
 	
-	end air_data_bus2;
+	-- to other adiru, FMC, Electronic Flight instrument 725, GNSS 756, Gnss 760
+	data ground_speed_D  --label 012
+		
+	end ground_speed_D;
 	
-	--To Engine Control System
-	data air_data_bus3
+	-- to adiru,,FMC
+	data track_angle_true_D  --label 013
+		
+	end track_angle_true_D;
 	
-	end air_data_bus3;
+	-- to adiru
+	data magnetic_heading  --label 014
+		
+	end magnetic_heading;
 	
-	--To User Devices
-	data air_data_bus4
+	--to adiru,fmc
+	data wind_speed_D --label 015
+		
+	end wind_speed_D;
 	
-	end air_data_bus4;
+	--to adiru
+	data wind_direction_true_D  --label 016
+		
+	end wind_direction_true_D;
 	
-	data air_data_bus5
+	--to fmc,irs controller 704,DFS 720, GNSS 756,GNSS 760
+	data set_latitude_echo --label 041
+		
+	end set_latitude_echo;
 	
-	end air_data_bus5;
+	--to irs controller 704,DFS 720, GNSS 756,GNSS 760
+	data set_longitude_echo --label 042
+		
+	end set_longitude_echo;
 	
-	data air_data_bus6
+	data set_magnetude_heading_echo --label 043
+		
+	end set_magnetude_heading_echo; 
 	
-	end air_data_bus6;
+	--to adiru,irs
+	data true_heading_D  --label 044
+		
+	end true_heading_D;
 	
-	--To Engine Electronic Control Computer
-	data air_data_bus7
+	data body_pitch_acceleration  --label 052
+		
+	end body_pitch_acceleration;
 	
-	end air_data_bus7;
+	data body_roll_acceleration  --label 053
+		
+	end body_roll_acceleration;
 	
-	data air_data_bus8
+	data body_yaw_acceleration  --label 054
+		
+	end body_yaw_acceleration;
 	
-	end air_data_bus8;
+	--to adiru,irs,fmc,gnss056
+	data ground_speed --label 312
+		
+	end ground_speed;
+	
+	--to fmc,adiru,irs,Electronic Flight instrument 025,Gnss056, Gnss 060
+	data track_angle_true --label 313
+		
+	end track_angle_true;
+	
+	--to adiru,irs,Electronic Flight instrument 025
+	data true_heading --label 314
+		
+	end true_heading;
+	
+	--to fmc,irs,adiru,Gnss056, Gnss 060
+	data wind_speed
+		
+	end wind_speed;
+	
+	
+	---------------------------------------------------------------
+	--Sensors
+	---------------------------------------------------------------
+	device pitot
+		
+	end pitot;
+	
+	device alpha_vanes -- to measure angle of attack
+	
+	end alpha_vanes;
+	
+	--Total air temperature probe
+	device TAT_probe
+		
+	end TAT_probe;
+	
+	--static ports
+	device static
+		
+	end static;
+	
+	-- Remarque :: RDC - Remote Data Concentrator: equipment supporting the exchange of information between sensors / actuators (digital, discrete and analogue data) and aircraft digital communication networks (ADCN). 
+	-- The RDCs are located in pressurized areas close to sensors and effectors, which may be potentially remote from the associated processing resources, then not in the avionics bay. 
+	--The above mentioned hardware modules should mainly communicate between each other using AFDX. 
+	--The message format should follow ARINC 664 specification. 
+	-------------------------------------------------------------------------
+	---- Buses
+
+	
+    -- AFDX :: Avionics Full DupleX (AFDX) is a redundant Ethernet network developed to be used as support for the internal communications
+    -- The internal communications are primarily the data exchanged between the different components of the avionics.
+    bus physical_afdx_link
+    	
+    end physical_afdx_link;
+  
+    bus implementation physical_afdx_link.impl
+    	
+    end physical_afdx_link.impl;
+  ------------------------------------------------------------------------
+  --- Memory
+  -------------------------------------------------------------------------
+   memory partition_memory
+     --  This component defines a memory segment associated to a
+     --  partition
+   end partition_memory;
+
+   memory implementation partition_memory.i
+   properties
+      Base_Address          => 0;
+      Memory_Size           => 102400 Bytes;
+      ARINC653::Memory_Type => (Code_Memory);
+   end partition_memory.i;
+  
+   memory main_memory
+     --  This component represents the whole memory associated to a
+     --  processor
+   end main_memory;
+
+   memory implementation main_memory.impl
+   subcomponents
+      irMem    : memory partition_memory.i;
+      adrMem : memory partition_memory.i;
+     
+     
+   end main_memory.impl;
+   
+    --------------------------------------------------------------------
+   --- Process
+   --------------------------------------------------------------------
+   process ir_process
+   	features
+   		in_irinputs: in event data port set_latitude_input;
+   end ir_process;
+   
+   process implementation ir_process.impl
+   
+   end ir_process.impl;
+   
+   --------------------------------------------------------------------
+   --- Virtual Processor
+   --------------------------------------------------------------------
+   
+   virtual processor partition
+   	
+   end partition;
+   	
+   	
+   virtual processor implementation partition.ir
+   end partition.ir;
+   	
+   virtual processor implementation partition.adr
+   end partition.adr;
+  
+  ----------------------------------------------------------------------
+  ---- Processor
+  ---------------------------------------------------------------------
+  
+   processor adirusys
+   end adirusys;
+   
+   processor implementation adirusys.impl
+   
+   	subcomponents
+   		partition_ir : virtual processor partition.ir;
+   		partition_adr : virtual processor partition.adr;
+    end adirusys.impl;
+   
+  -------------------------------------------------------------------------
+  --  Root system ADIRU
+  -------------------------------------------------------------------------
+  system ADIRU  
+  end ADIRU;
+  
+   system implementation ADIRU.impl
+    -- Root system implementation, with all first order subcomponents
+    
+
+  subcomponents
+    
+    mem : memory main_memory.impl;
+    sys : processor adirusys.impl;
+    pr1 : process ir_process.impl;
+    --pr2 : process adr_process.impl;
+    afdx_network : bus physical_afdx_link.impl;
+
+    
+
+    
+ 
+
+
+ 
+  end ADIRU.impl;
+	
 	
 	end Adiru;
